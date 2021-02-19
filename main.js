@@ -13,6 +13,13 @@ window.onload = function(){
           }
       }
     },
+    // @url: https://photonstorm.github.io/phaser3-docs/Phaser.Scale.ScaleManager.html
+    scale: {
+      mode: Phaser.Scale.FIT,
+      autoCenter: Phaser.Scale.CENTER_BOTH,
+      width: 1366,
+      height: 1024
+    },
     scene: [preloadGame, playGame]
   }
   game = new Phaser.Game(gameConfig);
