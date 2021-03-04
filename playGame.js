@@ -28,6 +28,57 @@ class playGame extends Phaser.Scene {
     this.foreground.setOrigin(0, 0);
     this.foreground.setScrollFactor(0);
 
+    //add npc
+    this.npc1 = this.add.image(800, 700, "npc1").setScale(0.7).setInteractive({useHandCursor: true});
+    this.text1 = this.add.text(800, 800, 'Allan looks sad, would you help him?', { font: '30px Comfortaa', fill: '#000' });
+    this.button1 = this.add.text(800, 850,"Yes", { font: '30px Comfortaa', fill: '#000' }).setInteractive({useHandCursor: true});
+    this.button2 = this.add.text(900, 850,"No", { font: '30px Comfortaa', fill: '#000' }).setInteractive({useHandCursor: true});;
+    this.text2 = this.add.text(800, 800, 'Simple kindness can be a huge help!', { font: '30px Comfortaa', fill: '#000' });
+    
+    this.text1.alpha = 0;
+    this.button1.alpha = 0;
+    this.button2.alpha = 0;
+    this.text2.alpha = 0;
+
+
+    this.text1.setScrollFactor(0);
+    this.button1.setScrollFactor(0);
+    this.button2.setScrollFactor(0);
+    this.text2.setScrollFactor(0);
+    
+    var npc1 = this.npc1;
+    var text1 = this.text1;
+    var text2 = this.text1;
+    var button1 = this.button1;
+    var button2 = this.button2;
+
+    npc1.on('pointerdown', function () {
+      // console.log('clicked');
+      text1.alpha = 1;  
+      button1.alpha = 1;
+      button2.alpha = 1;
+      setTimeout(function(){ button1.alpha = 0, button2.alpha = 0, text1.alpha = 0}, 4000);
+     });
+
+    button1.on('pointerdown', function switchScene (pointer) {
+      // console.log('clicked');
+      // location.href="dialogue.html";
+      this.scene.start('dialogueScene');
+     });
+
+  
+     
+    button2.on('pointerdown', function () {
+      // console.log('clicked');
+      text2.alpha = 1;
+      text1.alpha = 0;
+      button1.alpha = 0;
+      button2.alpha = 0;
+      // setTimeout(function(){ text2.alpha = 0}, 4000);
+      
+     });
+
+
     
 
     // add player
@@ -47,6 +98,7 @@ class playGame extends Phaser.Scene {
     });
     this.player.play("walk");
 
+    
     // allow key inputs to control the player
     this.cursors = this.input.keyboard.createCursorKeys();
 
