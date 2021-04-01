@@ -60,10 +60,14 @@ class playGame extends Phaser.Scene {
       setTimeout(function(){ button1.alpha = 0, button2.alpha = 0, text1.alpha = 0}, 4000);
      });
 
-    button1.on('pointerdown', function switchScene (pointer) {
+    /**
+     * I *think* this needs to be an arrow function, otherwise
+     * "this" is referring to the pointerdown event.
+     */
+    button1.on('pointerdown', (pointer) => {
       // console.log('clicked');
       // location.href="dialogue.html";
-      this.scene.start('dialogueScene');
+      this.scene.start('DialogueScene');
      });
 
   
