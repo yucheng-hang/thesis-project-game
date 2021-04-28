@@ -70,7 +70,7 @@ class playGame extends Phaser.Scene {
       this.scene.start('DialogueScene');
      });
 
-  
+    
      
     button2.on('pointerdown', function () {
       // console.log('clicked');
