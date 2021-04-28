@@ -53,7 +53,7 @@ class playGame extends Phaser.Scene {
     var button2 = this.button2;
 
     npc1.on('pointerdown', function () {
-      // console.log('clicked');
+      console.log('npc1 clicked');
       text1.alpha = 1;  
       button1.alpha = 1;
       button2.alpha = 1;
