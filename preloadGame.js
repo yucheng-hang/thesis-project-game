@@ -29,6 +29,9 @@ class preloadGame extends Phaser.Scene{
 
       //load the npcs
       this.load.image("npc1","assets/npc_1.png")
+
+      //load the json file
+      // this.game.load.json("dialogue","dialogue.json")
     }
     create(){
       this.scene.start("PlayGame");
