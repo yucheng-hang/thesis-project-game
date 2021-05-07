@@ -1,13 +1,16 @@
 class Npc extends Phaser.GameObjects.Sprite{
-    constructor(scene){
+    constructor(config){
+
+      super(config.scene, config.x, config.y-16, config.key)
   
-      var x = scene.player.x;
-      var y = scene.player.y - 16;
+      // var x = scene.player.x;
+      // var y = scene.player.y - 16;
   
-      super(scene, x, y, "npc1");
+      // super(scene, x, y, "npc1");
   
       // add to scene
-      scene.add.existing(this);
+      config.scene.physics.world.enable(this);
+      config.scene.add.existing(this);
 
 
       this.dialog = config.dialog;
@@ -16,10 +19,10 @@ class Npc extends Phaser.GameObjects.Sprite{
     }
   
     readDialog(key) {
-        // Read through dialogs in order, until stop property is detected
-        const blurb = this.dialog[key];
-        this.scene.showSubtitle(blurb);
-      }
+      // Read through dialogs in order, until stop property is detected
+      const blurb = this.dialog[key];
+      this.scene.showSubtitle(blurb);
+    }
     
     readRandom() {
         // Randomly select a dialog key, and read it.

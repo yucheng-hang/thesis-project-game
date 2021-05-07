@@ -7,7 +7,8 @@ class dialogueScene extends Phaser.Scene{
         
       
     }
-    create(){    
+    create(){       
+
         // add player and npc
         this.player5 = this.add.image(200, game.config.height /2, "player5");
         this.npc1 = this.add.image(800, game.config.height /2, "npc1").setScale(0.7).setInteractive({useHandCursor: true});
@@ -25,7 +26,10 @@ class dialogueScene extends Phaser.Scene{
         
         
         const npc1 = new Npc({
+            scene: this,
             key: "npc1",
+            x: 100,
+            y: 100,
             dialog: {
                 hello:{
                     question: true,
@@ -63,23 +67,32 @@ class dialogueScene extends Phaser.Scene{
             }
             
         })
+
+        npc1.setInteractive()
         
     
         
         this.blurbIndex = 0;
-        function showSubtitle(blurb) {
-            const line = blurb.say[this.lineIndex];
-            this.subtitle.setText(line);
-            this.subtitle.setAlpha(1);
-        }
+
 
         // click npc character to start conversation
         npc1.on('pointerdown', function () {
-            // console.log('clicked');
+            console.log('clicked');
             npc1.readDialog("hello");
-           });
+        });
         
     }
+
+    showSubtitle(blurb) {
+        // Fetched the keys for the chosen blurb/object
+        let keys = Object.keys(blurb)
+
+        // Gets the "next" line
+        const line = blurb[ keys[this.blurbIndex++] ];
+
+        this.subtitle.setText(line);
+        this.subtitle.setAlpha(1);
+    }    
 }
 
 
