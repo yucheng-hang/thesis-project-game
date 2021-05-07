@@ -32,6 +32,13 @@ class preloadGame extends Phaser.Scene{
 
       //load the json file
       // this.game.load.json("dialogue","dialogue.json")
+
+      //load choices and intro
+      this.load.image("choice1", "assets/choice1.png")
+      this.load.image("choice2", "assets/choice2.png")
+      this.load.image("choice3", "assets/choice3.png")
+      this.load.image("choice4", "assets/choice4.png")
+      this.load.image("intro", "assets/intro.png")
     }
     create(){
       this.scene.start("PlayGame");
